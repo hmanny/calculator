@@ -26,7 +26,7 @@
                 <div class="right-border"></div>
                 <div class="slider" id="orderSlider"></div>
 
-                <span class="min">0</span><span class="max">2500</span>
+                <span class="min">0</span><span class="max">20,000</span>
             </div>
             <div class="slider-half-width">
                 <h3>What's your averge number of items picked per order?</h3>
@@ -61,132 +61,34 @@
             </div>
         </div>
 
-        <div class="calc-section-half">
+        <div class="calc-section-third">
             <div class="section-header">
-                <h2>Total per Order <span id="storageSpace"></span></h2>
+                <h2>Monthly Order Cost</h2>
 
             </div>
-            <div id="total"></div>
+            <div id="totalOrders"></div>
 
         </div>
-        <div class="calc-section-half">
+        <div class="calc-section-third">
             <div class="section-header orange-header">
-                <h2>Total per Month <span id="storageSpace"></span></h2>
+                <h2>Monthly Storage Cost</h2>
+            </div>
+
+            <div id="totalStorage"></div>
+        </div>
+        <div class="calc-section-third">
+            <div class="section-header orange-header">
+                <h2>Total per Month</h2>
             </div>
 
             <div id="totalPerMonth"></div>
         </div>
     </div>
 
-    <script>
-        /*SET SLIDERS*/
-
-        var orderSlider = document.getElementById('orderSlider');
-        var itemSlider = document.getElementById('itemSlider');
-        var spaceSlider = document.getElementById('spaceSlider');
-        var productSlider = document.getElementById('productSlider');
-
-
-        /*CREATE SLIDERS*/
-
-        noUiSlider.create(orderSlider, {
-            start: [1200],
-            range: {
-                'min': 0,
-                '40%': 200,
-                'max': 2500
-            }
-        });
-        noUiSlider.create(itemSlider, {
-            start: [15],
-            range: {
-                'min': 1,
-                'max': 20
-            }
-        });
-        noUiSlider.create(spaceSlider, {
-            start: [3000],
-            range: {
-                'min': 0.4,
-                '30%': 10,
-                '50%': 100,
-                'max': 4500
-            }
-        });
-        noUiSlider.create(productSlider, {
-            start: [1000],
-            range: {
-                'min': 0,
-                '50%': 400,
-                'max': 1350
-            }
-        });
-
-        /*CREATE TOOLTIPS*/
-
-        $(".noUi-handle").append("<div class='tooltip'></div>");
-
-        /* DEFINE CALCULATOR VARIABLES */
-
-        var ordersPerMonth;
-        var itemsPerOrder;
-        var storageSpace;
-        var uniqueProducts;
-        var total;
-        var totalPerMonth;
+    <script src="calc.js"></script>
 
 
 
-        /*FUNCTIONS FOR SLIDING*/
-
-        orderSlider.noUiSlider.on('update', function() {
-            ordersPerMonth = Math.round(orderSlider.noUiSlider.get());
-            $("#orderSlider .noUi-handle div").text(ordersPerMonth);
-            $("#ordersFulfilled").text('(' + ordersPerMonth + ' Orders)');
-            calculate();
-
-        });
-        itemSlider.noUiSlider.on('update', function() {
-            itemsPerOrder = Number(itemSlider.noUiSlider.get()).toFixed(1);
-            $("#itemSlider .noUi-handle div").text(itemsPerOrder);
-            calculate();
-        });
-        spaceSlider.noUiSlider.on('update', function() {
-            if (Number(spaceSlider.noUiSlider.get()) < 1) {
-                storageSpace = Number(spaceSlider.noUiSlider.get()).toPrecision(2);
-            } else if (Number(spaceSlider.noUiSlider.get()) < 1000) {
-                storageSpace = Number(spaceSlider.noUiSlider.get()).toPrecision(3);
-            } else {
-                storageSpace = Number(spaceSlider.noUiSlider.get()).toPrecision(4);
-            }
-            $("#spaceSlider .noUi-handle div").text(storageSpace);
-            $("#storageSpace").text('(' + storageSpace + ' m³)');
-            calculate();
-
-        });
-        productSlider.noUiSlider.on('update', function() {
-            uniqueProducts = Math.round(productSlider.noUiSlider.get());
-            $("#productSlider .noUi-handle div").text(uniqueProducts);
-            calculate();
-        });
-
-
-        /* FUNCTION FOR CALCULATION */
-
-
-        function calculate() {
-            var total = Number(ordersPerMonth) + Number(itemsPerOrder) + Number(storageSpace) + Number(uniqueProducts);
-            var total = Math.round(total);
-
-            var totalPerMonth = total * 30;
-            var totalPerMonth = Math.round(totalPerMonth);
-
-            $('#total').text('£' + total);
-            $('#totalPerMonth').text('£' + totalPerMonth);
-
-        };
-
-    </script>
 
 
 

@@ -36,7 +36,7 @@ body {
     background: #c96f18;
 }
 .calculator-wrap .section-header h2 {
-    font-size: 26px;
+    font-size: 25px;
     margin: 0;
 }
 .calculator-wrap .calc-section {
@@ -45,15 +45,16 @@ body {
     margin-bottom: 45px;
     min-height: 390px;
 }
-.calculator-wrap .calc-section-half {
+.calculator-wrap .calc-section-third {
     border: 1px solid #7f5d47;
     padding: 0;
     margin-bottom: 45px;
     display: inline-block;
-    width: 49.5%;
+    width: 33%;
     text-align: center;
+    vertical-align: top;
 }
-.calculator-wrap .calc-section-half .section-header {
+.calculator-wrap .calc-section-third .section-header {
     text-align: center;
 }
 .calculator-wrap .slider-half-width {
@@ -111,7 +112,7 @@ body {
     padding: 10px 5px;
     left: -9px;
     text-align: center;
-    width: 50px;
+    width: 65px;
 }
 .min,
 .max {
@@ -130,8 +131,9 @@ body {
     font-weight: normal;
     font-size: 18px;
 }
-#total,
-#totalPerMonth {
+#totalOrders,
+#totalPerMonth,
+#totalStorage {
     padding: 20px;
     font-size: 44px;
 }
@@ -162,5 +164,10 @@ body {
     }
     .right-border {
         display: none
+    }
+}
+@media (max-width: 900px) {
+    .calculator-wrap .calc-section-third {
+        width: 50%;
     }
 }
