@@ -70,8 +70,20 @@ body {
     position: relative;
     margin: 20px 0;
     vertical-align: top;
-    height: 260px;
+    height: 245px;
     position: relative;
+}
+.conversions {
+    font-style: italic;
+    font-size: 15px;
+    font-weight: normal;
+    line-height: 1.4;
+    color: #111;
+    font-family: "open_sansregular", sans-serif;
+    font-style: italic;
+    text-align: left;
+    margin-left: 56px;
+    padding-bottom: 24px;
 }
 .right-border {
     position: absolute;
@@ -153,7 +165,7 @@ body {
 #totalPerMonth,
 #totalStorage {
     padding: 20px;
-    font-size: 36px;
+    font-size: 32px;
 }
 .calculator-wrap .orange-header {
     background: linear-gradient(#d97f28, #c26811);
@@ -170,7 +182,7 @@ body {
     }
     .calculator-wrap .section-header h2 {
         text-align: center;
-        font-size: 26px;
+        font-size: 23px;
     }
     #totalOrders,
     #totalStorage,
@@ -182,6 +194,10 @@ body {
     }
     .calculator-wrap .slider-half-width {
         height: 220px;
+    }
+    .conversions {
+        text-align: center;
+        margin-left: 0;
     }
 }
 @media (max-width: 900px) {

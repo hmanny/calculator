@@ -99,7 +99,7 @@ noUiSlider.create(itemSlider, {
     }
 });
 noUiSlider.create(spaceSlider, {
-    start: [3000],
+    start: [250],
     range: {
         'min': 0.4,
         '30%': 80,
@@ -136,7 +136,7 @@ var totalPerMonth;
 orderSlider.noUiSlider.on('update', function () {
     ordersPerMonth = Math.round(orderSlider.noUiSlider.get());
     $("#orderSlider .noUi-handle div").text(addCommas(ordersPerMonth));
-    $("#ordersFulfilled").text('(' + ordersPerMonth + ' Orders)');
+
     calculate();
 });
 
@@ -155,7 +155,7 @@ spaceSlider.noUiSlider.on('update', function () {
         storageSpace = Number(spaceSlider.noUiSlider.get()).toPrecision(4);
     }
     $("#spaceSlider .noUi-handle div").text(storageSpace);
-    $("#storageSpace").text('(' + storageSpace + ' m³)');
+
     calculate();
 });
 
@@ -180,6 +180,11 @@ function calculate() {
     totalOrders = round(totalOrders);
     totalStorage = round(totalStorage);
     totalPerMonth = round(totalPerMonth);
+
+
+    $("#ordersFulfilled").text('(' + addCommas(ordersPerMonth) + ' orders, £' + round(totalPerOrder) + ' per order)');
+
+    $("#storageSpace").text('(' + storageSpace + ' m³)');
 
 
     $('#totalPerOrder').text('£' + totalPerOrder);
@@ -209,9 +214,6 @@ function calculate() {
         }
 
     };
-
-
-
 
 
     function round(numb) {
