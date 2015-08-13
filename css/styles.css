@@ -10,9 +10,13 @@ body {
     text-align: center;
     font-family: sans-serif;
 }
+.calculator-wrap a {
+    color: white;
+}
 .calculator-wrap {
-    max-width: 937px;
+    max-width: 977px;
     margin: 0 auto;
+    padding: 0 20px;
 }
 .calculator-wrap .section-header {
     text-align: left;
@@ -27,7 +31,7 @@ body {
     position: absolute;
     right: 0;
     top: 0;
-    padding: 6px 10px 0 10px;
+    padding: 4px 10px 0 10px;
     border: 3px solid white;
     border-radius: 50%;
     width: 36px;
@@ -36,14 +40,16 @@ body {
     background: #c96f18;
 }
 .calculator-wrap .section-header h2 {
-    font-size: 25px;
+    font-size: 24px;
     margin: 0;
+    color: #fff;
 }
 .calculator-wrap .calc-section {
     border: 1px solid #7f5d47;
     padding: 0;
     margin-bottom: 45px;
     min-height: 390px;
+    background: #fff;
 }
 .calculator-wrap .calc-section-third {
     border: 1px solid #7f5d47;
@@ -53,6 +59,7 @@ body {
     width: 33%;
     text-align: center;
     vertical-align: top;
+    background: #fff;
 }
 .calculator-wrap .calc-section-third .section-header {
     text-align: center;
@@ -62,6 +69,9 @@ body {
     width: 49%;
     position: relative;
     margin: 20px 0;
+    vertical-align: top;
+    height: 260px;
+    position: relative;
 }
 .right-border {
     position: absolute;
@@ -73,24 +83,30 @@ body {
 }
 .calculator-wrap .calc-section .slider-half-width h3 {
     font-style: italic;
-    font-size: 18px;
+    font-size: 17px;
     font-weight: normal;
     max-width: 50%;
     margin: 20px auto;
+    line-height: 1.4;
+    color: #111;
+    font-family: "open_sansregular", sans-serif;
 }
 .calculator-wrap .directions {
     width: 80%;
     margin: 20px auto;
     padding: 25px 5px;
     color: white;
-    background: #a2806a;
+    background: linear-gradient(#d97f28, #c26811);
     font-size: 18px;
     border: 1px solid #7f5d47;
 }
 .slider {
     margin: 60px auto;
     width: 75%;
-    position: relative;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
 }
 .slider .noUi-base {
     background-color: #d27821;
@@ -127,15 +143,17 @@ body {
     right: 13%;
 }
 #ordersFulfilled,
-#storageSpace {
+#storageSpace,
+#totalPerOrder {
     font-weight: normal;
     font-size: 18px;
+    font-family: "open_sansregular", sans-serif;
 }
 #totalOrders,
 #totalPerMonth,
 #totalStorage {
     padding: 20px;
-    font-size: 44px;
+    font-size: 36px;
 }
 .calculator-wrap .orange-header {
     background: linear-gradient(#d97f28, #c26811);
@@ -144,7 +162,7 @@ body {
     .calculator-wrap .slider-half-width {
         display: block;
         width: 100%;
-        margin: 80px 0;
+        margin: 45px 0;
     }
     #ordersFulfilled,
     #storageSpace {
@@ -154,20 +172,23 @@ body {
         text-align: center;
         font-size: 26px;
     }
-    #total,
+    #totalOrders,
+    #totalStorage,
     #totalPerMonth {
         font-size: 26px;
-    }
-    .min,
-    .max {
-        bottom: -26px;
     }
     .right-border {
         display: none
     }
+    .calculator-wrap .slider-half-width {
+        height: 220px;
+    }
 }
 @media (max-width: 900px) {
     .calculator-wrap .calc-section-third {
-        width: 50%;
+        width: 49.5%;
+    }
+    .calculator-wrap .calc-section-third h2 {
+        font-size: 20px;
     }
 }

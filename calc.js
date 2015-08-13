@@ -239,7 +239,7 @@ function addCommas(nStr) {
         x1 = x1.replace(rgx, '$1' + ',' + '$2');
     }
 
-    if (Number(nStr) > 9999) {
+    if (Number(nStr) > 999) {
         return x1 + x2;
     } else {
         return nStr;
