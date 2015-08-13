@@ -99,7 +99,7 @@ noUiSlider.create(itemSlider, {
     }
 });
 noUiSlider.create(spaceSlider, {
-    start: [300],
+    start: [3000],
     range: {
         'min': 0.4,
         '30%': 80,
@@ -136,7 +136,7 @@ var totalPerMonth;
 orderSlider.noUiSlider.on('update', function () {
     ordersPerMonth = Math.round(orderSlider.noUiSlider.get());
     $("#orderSlider .noUi-handle div").text(addCommas(ordersPerMonth));
-
+    $("#ordersFulfilled").text('(' + ordersPerMonth + ' Orders)');
     calculate();
 });
 
@@ -155,7 +155,7 @@ spaceSlider.noUiSlider.on('update', function () {
         storageSpace = Number(spaceSlider.noUiSlider.get()).toPrecision(4);
     }
     $("#spaceSlider .noUi-handle div").text(storageSpace);
-
+    $("#storageSpace").text('(' + storageSpace + ' m³)');
     calculate();
 });
 
@@ -176,17 +176,13 @@ function calculate() {
     totalOrders = Number(totalPerOrder * ordersPerMonth);
     totalPerMonth = Number(totalOrders + totalStorage);
 
-    totalPerOrder = round(totalPerOrder);
+
     totalOrders = round(totalOrders);
     totalStorage = round(totalStorage);
     totalPerMonth = round(totalPerMonth);
 
-    $("#ordersFulfilled").text('(' + addCommas(ordersPerMonth) + ' orders, £' + totalPerOrder + ' per order)');
 
-    $("#storageSpace").text('(' + storageSpace + ' m³)');
-
-
-
+    $('#totalPerOrder').text('£' + totalPerOrder);
     $('#totalOrders').text('£' + totalOrders);
     $('#totalStorage').text('£' + totalStorage);
     $('#totalPerMonth').text('£' + totalPerMonth);
@@ -215,6 +211,9 @@ function calculate() {
     };
 
 
+
+
+
     function round(numb) {
         if (numb > 100) {
             return addCommas(Math.round(numb));
@@ -240,8 +239,10 @@ function addCommas(nStr) {
         x1 = x1.replace(rgx, '$1' + ',' + '$2');
     }
 
-    return x1 + x2;
+    if (Number(nStr) > 9999) {
+        return x1 + x2;
+    } else {
+        return nStr;
+    }
 
 }
-
-};
